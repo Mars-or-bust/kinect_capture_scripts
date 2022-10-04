@@ -54,10 +54,10 @@ def cam_controller(connection, azure_kinect_sdk_path):
         log = []
 
         # -l specifies the time, set to 15 when debugging
-        cmd1 = "k4arecorder.exe --device 0 --external-sync sub -r 30 -l 3600 " \
+        cmd1 = "k4arecorder.exe --device 0 --external-sync sub -r 30 -c 720p -l 3600 " \
                   "--sync-delay 1 " + "\"" + cam1_save_path + ".mkv\""
 
-        cmd2 = "k4arecorder.exe --device 1 --external-sync sub -r 30 -l 3600 " \
+        cmd2 = "k4arecorder.exe --device 1 --external-sync sub -r 30 -c 720p -l 3600 " \
                "--sync-delay 1 " + "\"" + cam2_save_path + ".mkv\""
 
         print(cmd1)
@@ -170,48 +170,10 @@ def cam_controller(connection, azure_kinect_sdk_path):
             connection.send(log)
 
             start_stop = False
-        # TIME THE READLINE 
-        #while not sound_on:
-        #    try:
-        #        line = activate_sound(process1)
-        #        log.append(line)
-        #        sound_on = True
-        #        print(line)
-        #    except:
-        #        try:
-        #            exit_main = terminate_main(connection)
-        #            if exit_main:
-        #                break
-        #        except:
-        #            time.sleep(0.01)
 
         cmd, terminate = connection.recv()
         #start_stop = False
 
-        #if not terminate:
-        #    cmd, terminate = connection.recv()
-
-        # cams_on = True
-        # while cams_on is True:
-        #     try:
-        #         if not start_stop:
-        #             print("Ending Video Capture")
-        #             # #Terminate the processes
-        #             # try:
-        #             #     process1.send_signal(signal.CTRL_C_EVENT)
-        #             # except:
-        #             #     pass
-        #             #
-        #             # try:
-        #             #     process2.send_signal(signal.CTRL_C_EVENT)
-        #             # except:
-        #             #     print('All Cameras Off')
-        #             # check if they are still alive
-        #             cams_on = False
-        #         else:
-        #             time.sleep(0.1)
-        #     except:
-        #         continue
 
     # Do one last check to ensure the cameras are off
     try:
