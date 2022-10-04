@@ -1,0 +1,1 @@
+The main file is initialize_cameras_w_sound. This creates subprocesses for the cam_controller (which also controls audio) as well as the interface_recording.
